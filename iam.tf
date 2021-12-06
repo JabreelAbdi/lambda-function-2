@@ -3,7 +3,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
   role = aws_iam_role.lambda_role.id
 
 
-  policy = file("${path.module}/lambda-assume-policy.json")
+  policy = file("${path.module}/lambda-policy.json")
 }
 
 resource "aws_iam_role" "lambda_role" {
