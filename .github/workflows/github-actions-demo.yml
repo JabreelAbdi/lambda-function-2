@@ -4,5 +4,29 @@ jobs:
   terraform-deployment:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This is my first step"
-  
+      - name: Authenticate with AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with: 
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      
+      - name: Clone your code in the pipeline
+        uses: actions/checkout@v2
+
+
+      -name: Terraform setup
+       uses: hashicorp/setup-terraform@v1
+
+
+      -name: terraform init
+       id: init
+       run: terraform init
+
+       -name: terraform plan
+       id: plan
+       run: terraform plan
+       continue-on-error: true 
+        
+
+
