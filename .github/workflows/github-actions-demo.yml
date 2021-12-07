@@ -1,0 +1,8 @@
+name: Talent Academy Demo
+on: [push]
+jobs:
+  terraform-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is my first step"
+  
