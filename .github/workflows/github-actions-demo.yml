@@ -14,19 +14,18 @@ jobs:
       - name: Clone your code in the pipeline
         uses: actions/checkout@v2
 
+      - name: Terraform setup
+        uses: hashicorp/setup-terraform@v1
 
-      -name: Terraform setup
-       uses: hashicorp/setup-terraform@v1
 
+      - name: terraform init
+        id: init
+        run: terraform init
 
-      -name: terraform init
-       id: init
-       run: terraform init
-
-       -name: terraform plan
-       id: plan
-       run: terraform plan
-       continue-on-error: true 
+      - name: terraform plan
+        id: plan
+        run: terraform plan
+        continue-on-error: true 
         
 
 
